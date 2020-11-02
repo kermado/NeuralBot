@@ -97,14 +97,12 @@ namespace AimBot.Detectors
         private bool disposed;
         private OpenCV opencv;
         private readonly Resizer resizer;
-        private readonly Stopwatch watch;
 
         public OpenComputerVisionDetector()
         {
             disposed = false;
             opencv = null;
             resizer = new Resizer();
-            watch = new Stopwatch();
         }
 
         protected override bool Reload()
@@ -128,8 +126,6 @@ namespace AimBot.Detectors
 
         protected override void AddDetections(IntPtr image, Rectangle region, Esp esp, List<Detection> detections)
         {
-            watch.Restart();
-
             if (image != IntPtr.Zero)
             {
                 var resized = resizer.Resize(image, region.Width, region.Height, InputWidth, InputHeight);
@@ -157,15 +153,6 @@ namespace AimBot.Detectors
                         }
                     }
                 }
-            }
-
-            watch.Stop();
-
-            var fps = 1000.0 / (double)watch.ElapsedMilliseconds;
-
-            if (esp != null)
-            {
-                esp.Add(new TextShape(new Point(region.X + region.Width, region.Y + 20), $"FPS: {Math.Round(fps)}", Color.Red, 18));
             }
         }
 

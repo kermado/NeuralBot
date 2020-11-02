@@ -65,8 +65,6 @@ namespace AimBot.Grabbers
         private int previousNumBytes;
         private int width;
         private int height;
-
-        private Stopwatch watch;
         private bool disposed;
 
         public GdiGrabber()
@@ -74,7 +72,6 @@ namespace AimBot.Grabbers
             current = IntPtr.Zero;
             previous = IntPtr.Zero;
 
-            watch = new Stopwatch();
             disposed = false;
         }
 
@@ -86,8 +83,6 @@ namespace AimBot.Grabbers
             {
                 esp.Add(new RectangleShape(region, Color.Transparent, Color.LimeGreen, 1));
             }
-
-            watch.Restart();
 
             // Reuse existing bitmap if possible.
             // Better not to hammer the GC.
@@ -193,15 +188,6 @@ namespace AimBot.Grabbers
             currentNumBytes = previousNumBytes;
             previousNumBytes = temp2;
 
-            watch.Stop();
-
-            var fps = 1000.0 / (double)watch.Elapsed.Milliseconds;
-
-            if (esp != null)
-            {
-                esp.Add(new TextShape(new Point(region.X + width, region.Y), $"FPS: {Math.Round(fps)}", Color.LimeGreen, 18));
-            }
-
             return current;
         }
 
@@ -240,7 +226,6 @@ namespace AimBot.Grabbers
                 }
 
                 data = null;
-                watch = null;
                 disposed = true;
             }
         }
