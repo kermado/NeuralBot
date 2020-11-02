@@ -62,20 +62,20 @@ The mouse injector is responsible for injecting mouse events requested by either
 
 ## Frequently Asked Questions
 
-*Will this work with game xyz?*
+**Will this work with game xyz?**
 This aimbot will probably work with most first-person shooter games. You will most likely need to configure the aimer for your mouse sensitivity in order to get the best results.
 
-*Where can I find trained neural network configuration and model files?*
+**Where can I find trained neural network configuration and model files?**
 The aimbot doesn't include any such files at this time. You can always train your own neural network. The [Darknet](https://github.com/AlexeyAB/darknet) project describes how to do this.
 
-*Will I get banned for using this?*
+**Will I get banned for using this?**
 If the user agreement doesn't allow the use of such programs then probably. Many anti-cheat programs detect injected mouse input events. There is also a good chance that this will become "signature detected" by many anti-cheat programs in the future.
 
-*How can I calibrate the aimers?*
+**How can I calibrate the aimers?**
 The sensitivity settings can be calibrated in-game by using the flick aimer. Adjust the parameters until the flick lands perfectly on the target position. The PID parameters can be tuned using well-known methods, such as the Ziegler-Nichols method.
 
-*Does this work with AMD GPUs?*
+**Does this work with AMD GPUs?**
 No. The included OpenCV binary has been built for NVIDIA Pascal and Turing GPUs only. An NVIDIA GTX 1080 or better is recommended.
 
-*How do I run the aimbot?*
+**How do I run the aimbot?**
 You will need to use Visual Studio 2019 or later to build the solution. Pre-built binaries may be added in the future.
