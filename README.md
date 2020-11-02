@@ -2,6 +2,8 @@
 
 This is a general purpose aimbot, which uses a neural network for enemy/target detection.
 
+![AimBot](gui.PNG?raw=true "AimBot")
+
 ## Features
 
 Provided below is a list of the main features:
