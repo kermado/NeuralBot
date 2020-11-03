@@ -30,7 +30,9 @@ The GDI screen grabber uses the Win32 GDI API. This seems to be pretty efficient
 
 #### DirectX Grabber
 
-The DirectX screen grabber uses the Windows Desktop Duplication API. This is supposedly the most efficient method, though the GDI method appears to be more efficient in practice. A pre-built binary is included, though the complete [source code](https://github.com/kermado/DXGrabber) is available.
+The DirectX screen grabber uses the Windows Desktop Duplication API. This is supposedly the most efficient method, though the GDI method appears to be more efficient in practice. One important difference is that this method captures from the screen rather than the process main window. You may therefore need to disable ESP rendering in order to avoid confusing the neural network.
+
+A pre-built binary for the DirectX grabber is included, though the complete [source code](https://github.com/kermado/DXGrabber) is available.
 
 ### Object Detection
 
