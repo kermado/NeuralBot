@@ -128,7 +128,7 @@ namespace AimBot.Detectors
 
             if (esp != null)
             {
-                esp.Add(new RectangleShape(new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height), Color.Transparent, Color.Red, 1));
+                esp.Add(new RectangleShape(new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height), Color.Transparent, Color.Red, 2));
             }
 
             int hho = 0;
@@ -176,6 +176,11 @@ namespace AimBot.Detectors
             if (esp != null)
             {
                 esp.Add(new CircleShape(new Point(head.X, head.Y), 5, Color.Transparent, Color.Cyan, 1));
+
+                if (head != body)
+                {
+                    esp.Add(new CircleShape(new Point(body.X, body.Y), 5, Color.Transparent, Color.Cyan, 1));
+                }
             }
         }
     }

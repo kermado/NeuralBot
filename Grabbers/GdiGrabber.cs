@@ -80,7 +80,7 @@ namespace AimBot.Grabbers
 
             if (esp != null)
             {
-                esp.Add(new RectangleShape(region, Color.Transparent, Color.LimeGreen, 1));
+                esp.Add(new RectangleShape(region, Color.Transparent, Color.LimeGreen, 2));
             }
 
             // Reuse existing bitmap if possible.

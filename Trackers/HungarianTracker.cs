@@ -193,7 +193,7 @@ namespace AimBot.Trackers
             {
                 foreach (var tracked in trackedObjects)
                 {
-                    esp.Add(new TextShape(tracked.Detection.BoundingBox.CenterRight(), tracked.Id.ToString(), Color.Red, 12));
+                    esp.Add(new TextShape(tracked.Detection.BoundingBox.TopLeft(), tracked.Id.ToString(), Color.Red, 12));
                 }
             }
         }

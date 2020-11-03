@@ -9,6 +9,11 @@ namespace AimBot.Helpers
             return new Point(rect.X + rect.Width / 2, rect.Y + rect.Height / 2);
         }
 
+        public static Point TopLeft(this Rectangle rect)
+        {
+            return new Point(rect.X, rect.Y);
+        }
+
         public static Point TopRight(this Rectangle rect)
         {
             return new Point(rect.X + rect.Width, rect.Y);

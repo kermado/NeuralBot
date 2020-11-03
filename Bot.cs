@@ -241,7 +241,7 @@ namespace AimBot
                         if (esp != null)
                         {
                             var fps = 1000.0 / (double)stopwatch.Elapsed.TotalMilliseconds;
-                            esp.Add(new TextShape(new Point(region.X + region.Width, region.Y + 40), $"FPS: {Math.Round(fps)}", Color.Blue, 18));
+                            esp.Add(new TextShape(new Point(region.X, region.Y - 20), $"FPS: {Math.Round(fps)}", Color.LimeGreen, 12));
                         }
                     }
                     else

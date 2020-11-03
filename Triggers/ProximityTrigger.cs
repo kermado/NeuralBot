@@ -45,7 +45,7 @@ namespace AimBot.Triggers
             {
                 if (target != Point.Empty && esp != null)
                 {
-                    esp.Add(new CircleShape(new Point(target.X, target.Y), Proximity, Color.Transparent, Color.Cyan, 1));
+                    esp.Add(new CircleShape(new Point(target.X, target.Y), Proximity, Color.Transparent, Color.Yellow, 1));
                 }
 
                 bool trigger = (aim == true  && (Conditions & Condition.WhenAiming)    != 0) ||

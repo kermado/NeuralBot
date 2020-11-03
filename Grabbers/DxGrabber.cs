@@ -41,7 +41,7 @@ namespace AimBot.Grabbers
 
         public IntPtr Grab(IntPtr windowHandle, Rectangle region, Esp esp, bool wait, out bool changed)
         {
-            esp?.Add(new RectangleShape(region, Color.Transparent, Color.LimeGreen, 1));
+            esp?.Add(new RectangleShape(region, Color.Transparent, Color.LimeGreen, 2));
 
             if (native != IntPtr.Zero)
             {
