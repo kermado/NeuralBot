@@ -22,7 +22,15 @@ The aimbot is designed to be extended/customised. You can implement your own com
 
 ### Screen Grabber
 
-The screen grabber is responsible for capturing a specific region of the screen. The included GDI screen grabber seems to work well in practice.
+The screen grabber is responsible for capturing a specific region of the screen. To screen grabbers are included:
+
+#### GDI Grabber
+
+The GDI screen grabber uses the Win32 GDI API. This seems to be pretty efficient in practice, capturing the main window for the target process.
+
+#### DirectX Grabber
+
+The DirectX screen grabber uses the Windows Desktop Duplication API. This is supposedly the most efficient method, though the GDI method appears to be more efficient in practice.
 
 ### Object Detection
 
