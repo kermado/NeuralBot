@@ -30,11 +30,11 @@ The GDI screen grabber uses the Win32 GDI API. This seems to be pretty efficient
 
 #### DirectX Grabber
 
-The DirectX screen grabber uses the Windows Desktop Duplication API. This is supposedly the most efficient method, though the GDI method appears to be more efficient in practice.
+The DirectX screen grabber uses the Windows Desktop Duplication API. This is supposedly the most efficient method, though the GDI method appears to be more efficient in practice. A pre-compiled binary is included, though the complete [source code](https://github.com/kermado/DXGrabber) is available.
 
 ### Object Detection
 
-The object detector is responsible for identifying potential targets from an image. The included detector uses the OpenCV library to perform object detection using a neural network. You must provide a configuration (.cfg) file and associated model (.weights) file in the Darknet format. Note that the aimbot requires the object detection to run at a high framerate (> 100fps) for good results. The YOLOv4 architecture is recommended with a input resolution of 512x512. It is possible to use a larger screen capture area, though the accuracy of the trained neural network may be adversely affected. The included OpenCV detector supports NVIDIA Pascal and Turing cards only.
+The object detector is responsible for identifying potential targets from an image. The included detector uses the OpenCV library to perform object detection using a neural network. You must provide a configuration (.cfg) file and associated model (.weights) file in the Darknet format. Note that the aimbot requires the object detection to run at a high framerate (> 100fps) for good results. The YOLOv4 architecture is recommended with a input resolution of 512x512. It is possible to use a larger screen capture area, though the accuracy of the trained neural network may be adversely affected. The included pre-built OpenCV detector supports NVIDIA Pascal and Turing cards only, though the complete [source code](https://github.com/kermado/Detector) is available.
 
 ### Object Tracker
 
