@@ -74,6 +74,10 @@ The mouse injector is responsible for injecting mouse events requested by either
 
 If the screen capture region is not the same size as the neural network input then the image must be scaled. The current scaling method does not preserve aspect ratio. It is recommended that you set the capture region dimensions to be equal to the neural network input dimensions. This generally yields the best results. If you must use different capture region dimensions then it is highly recommended to maintain the aspect ratio to be equal to the neural network input aspect ratio.
 
+### Fullscreen
+
+The screen grabbers are unable to capture from most games that run in fullscreen mode. You will need to run the game in windowed or borderless windowed mode.
+
 ## Frequently Asked Questions
 
 **Will this work with game xyz?**
