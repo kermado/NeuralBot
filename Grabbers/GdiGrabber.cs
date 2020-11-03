@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
@@ -90,6 +89,19 @@ namespace AimBot.Grabbers
             height = region.Height;
             var numPixels = width * height;
             var numBytes = numPixels * 12;
+
+            if (current == IntPtr.Zero || currentNumBytes != numBytes)
+            {
+                if (current != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(current);
+                    current = IntPtr.Zero;
+                }
+
+                current = Marshal.AllocHGlobal(numBytes);
+                currentNumBytes = numBytes;
+            }
+
             if (previous == IntPtr.Zero || previousNumBytes != numBytes)
             {
                 if (previous != IntPtr.Zero)
@@ -100,11 +112,11 @@ namespace AimBot.Grabbers
 
                 previous = Marshal.AllocHGlobal(numBytes);
                 previousNumBytes = numBytes;
+            }
 
-                if (data == null || data.Length != numPixels * 3)
-                {
-                    data = new byte[numPixels * 3];
-                }
+            if (data == null || data.Length != numPixels * 3)
+            {
+                data = new byte[numPixels * 3];
             }
 
             var clientRect = Helpers.ScreenHelper.ClientRectangle(windowHandle);
@@ -146,12 +158,12 @@ namespace AimBot.Grabbers
                     int error = Marshal.GetLastWin32Error();
                 }
 
-                // Copy to "previous" buffer.
+                // Copy to "current" buffer.
                 unsafe
                 {
                     fixed (byte* source = data)
                     {
-                        float* destination = (float*)previous;
+                        float* destination = (float*)current;
                         for (int c = 0; c < 3; ++c)
                         {
                             float* page = destination + c * width * height;
@@ -169,8 +181,7 @@ namespace AimBot.Grabbers
                 }
 
                 // Compare buffers.
-                if (current == IntPtr.Zero) { changed = true; }
-                else if (previousNumBytes != currentNumBytes) { changed = true; }
+                if (previousNumBytes != currentNumBytes) { changed = true; }
                 else { changed = CompareMemory(previous, current, numBytes) != 0; }
             }
             while (wait == true && changed == false);

@@ -126,7 +126,7 @@ namespace AimBot.Detectors
 
         protected override void AddDetections(IntPtr image, Rectangle region, Esp esp, List<Detection> detections)
         {
-            if (image != IntPtr.Zero)
+            if (opencv != null && image != IntPtr.Zero)
             {
                 var resized = resizer.Resize(image, region.Width, region.Height, InputWidth, InputHeight);
                 if (resized != IntPtr.Zero)

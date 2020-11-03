@@ -374,7 +374,7 @@ namespace AimBot
             };
 
             stopwatch = new Stopwatch();
-            esp = new GameOverlayEsp();
+            esp = null;
             bot = new Bot();
         }
 

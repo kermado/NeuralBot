@@ -200,7 +200,7 @@ namespace AimBot
         {
             time += dt;
 
-            if (process != null)
+            if (process != null && grabber != null)
             {
                 var image = grabber.Grab(process.MainWindowHandle, region, esp, true, out var changed);
                 if (image != IntPtr.Zero && changed)
