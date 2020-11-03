@@ -25,6 +25,9 @@ namespace AimBot.Grabbers
 
         [DllImport(LibraryName, EntryPoint = "grab")]
         private static extern IntPtr Capture(IntPtr native, int x, int y, int width, int height, int format, int timeout, bool wait, ref int frames);
+
+        [DllImport(LibraryName, EntryPoint = "save")]
+        private static extern void Save(IntPtr native, int x, int y, int width, int height, int format, int timeout, string filepath);
         #endregion
 
         private IntPtr native;
@@ -38,7 +41,7 @@ namespace AimBot.Grabbers
 
         public IntPtr Grab(IntPtr windowHandle, Rectangle region, Esp esp, bool wait, out bool changed)
         {
-            esp.Add(new RectangleShape(region, Color.Transparent, Color.LimeGreen, 1));
+            esp?.Add(new RectangleShape(region, Color.Transparent, Color.LimeGreen, 1));
 
             if (native != IntPtr.Zero)
             {

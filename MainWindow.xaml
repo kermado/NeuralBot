@@ -37,7 +37,7 @@
                 <TextBlock Text="Activation Button" />
                 <ComboBox Name="AimButton" ItemsSource="{Binding Path=ActivationButtons}" SelectedItem="{Binding Path=ActivationButton}" />
                 <TextBlock Text="Enable ESP" />
-                <CheckBox IsChecked="{Binding Path=ESP}" />
+                <CheckBox IsChecked="{Binding Path=Esp}" />
                 <Grid Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
