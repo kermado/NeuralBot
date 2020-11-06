@@ -32,7 +32,7 @@ namespace AimBot.Detectors
             }
 
             // Check need to reallocate memory.
-            if (width < resizedWidth || height < resizedHeight)
+            if (width != resizedWidth || height != resizedHeight)
             {
                 if (resized != IntPtr.Zero)
                 {
@@ -47,8 +47,8 @@ namespace AimBot.Detectors
 
             for (int c = 0; c < 3; ++c)
             {
-                var resizedPage = resized + (width * height * c);
-                var sourcePage = source + (sourceWidth * sourceHeight * c);
+                var resizedPage = resized + (width * height * c * sizeof(float));
+                var sourcePage = source + (sourceWidth * sourceHeight * c * sizeof(float));
                 NearestNeighbour(resizedPage, sourcePage, width, height, sourceWidth, sourceHeight);
             }
 

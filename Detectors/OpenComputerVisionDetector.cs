@@ -131,10 +131,10 @@ namespace AimBot.Detectors
                 var resized = resizer.Resize(image, region.Width, region.Height, InputWidth, InputHeight);
                 if (resized != IntPtr.Zero)
                 {
-                    var ratiox = (double)region.Width / 512.0;
-                    var ratioy = (double)region.Height / 512.0;
+                    var ratiox = (double)region.Width / InputWidth;
+                    var ratioy = (double)region.Height / InputHeight;
 
-                    var results = opencv.Detect(image, region.Width, region.Height, out var count);
+                    var results = opencv.Detect(resized, InputWidth, InputHeight, out var count);
                     if (results != null && results.Length > 0)
                     {
                         for (int i = 0; i < count; ++i)
