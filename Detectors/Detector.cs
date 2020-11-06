@@ -175,11 +175,11 @@ namespace AimBot.Detectors
 
             if (esp != null)
             {
-                esp.Add(new CircleShape(new Point(head.X, head.Y), 5, Color.Transparent, Color.Cyan, 1));
+                esp.Add(new CircleShape(new Point(head.X, head.Y), 5, Color.Transparent, Color.Red, 1));
 
                 if (head != body)
                 {
-                    esp.Add(new CircleShape(new Point(body.X, body.Y), 5, Color.Transparent, Color.Cyan, 1));
+                    esp.Add(new CircleShape(new Point(body.X, body.Y), 5, Color.Transparent, Color.Red, 1));
                 }
             }
         }

@@ -216,6 +216,12 @@ namespace AimBot.Trackers
             var a1 = r1.Width * r1.Height;
             var a2 = r2.Width * r2.Height;
 
+            // Degenerate?
+            if (a1 <= 0.0 || a2 <= 0.0)
+            {
+                return 1.0;
+            }
+
             // Calculate area of intersection.
             var xi1 = Math.Max(r1.Left, r2.Left);
             var xi2 = Math.Min(r1.Right, r2.Right);

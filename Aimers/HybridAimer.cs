@@ -16,8 +16,10 @@ namespace AimBot.Aimers
         private double fr; // Flick radius (in pixels).
         private int fd; // Flick delay (in milliseconds).
         private int ts; // Time-step (in milliseconds).
-        private int td; // Trigger delay (in milliseconds);
-        private bool trigger;
+        private int td; // Trigger delay (in milliseconds).
+        private int cd; // Cooldown (in milliseconds).
+        private bool trigger; // Trigger after flicking?
+        private bool continueAiming; // Continue aiming after flicking?
 
         private Point target;
         private Point position;
@@ -84,6 +86,18 @@ namespace AimBot.Aimers
             set { td = value; }
         }
 
+        public int CooldownMs
+        {
+            get { return cd; }
+            set { cd = value; }
+        }
+
+        public bool ContinueAiming
+        {
+            get { return continueAiming; }
+            set { continueAiming = value; }
+        }
+
         public HybridAimer()
         {
             gain = 0.1;
@@ -93,7 +107,9 @@ namespace AimBot.Aimers
             fd = 10;
             ts = 10;
             td = 50;
+            cd = 250;
             trigger = true;
+            continueAiming = false;
 
             Clear();
         }
@@ -155,8 +171,8 @@ namespace AimBot.Aimers
                         if (ft >= fd * 0.001)
                         {
                             ft = 0.0;
-                            ready = false; // Wait for aim key/button to be pressed again.
-                            thread = new Thread(() => Flick(injector, target, position, ms, hs, vs, ts, td, trigger));
+                            ready = continueAiming; // Wait for aim key/button to be pressed again?
+                            thread = new Thread(() => Flick(injector, target, position, ms, hs, vs, ts, td, cd, trigger));
                             thread.Start();
                         }
                         else
@@ -191,7 +207,7 @@ namespace AimBot.Aimers
             time = 0.0;
         }
 
-        private static void Flick(MouseInjector injector, Point target, Point position, double flickSpeed, double horizontalSensitivity, double verticalSensitivity, int timestepMs, int triggerDelayMs, bool trigger)
+        private static void Flick(MouseInjector injector, Point target, Point position, double flickSpeed, double horizontalSensitivity, double verticalSensitivity, int timestepMs, int triggerDelayMs, int cooldownMs, bool trigger)
         {
             double ex = 0.0;
             double ey = 0.0;
@@ -232,6 +248,11 @@ namespace AimBot.Aimers
                     var rng = new Random();
                     injector.Click(0, rng.Next(50, 80)); // TODO: Allow range to be configured?
                 }
+            }
+
+            if (cooldownMs > 0)
+            {
+                Thread.Sleep(cooldownMs);
             }
         }
 
