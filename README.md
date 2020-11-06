@@ -1,8 +1,10 @@
-﻿# Neural Network Aimbot
+﻿# NeuralBot - Neural Network Aimbot
 
 This is a general purpose aimbot, which uses a neural network for enemy/target detection. The aimbot doesn't read/write memory from/to the target process. It is essentially a "pixel bot", designed primarily for use with first-person shooter games. Please check that the user agreement for your game allows the use of such a programs!
 
 ![AimBot](gui.PNG?raw=true "AimBot")
+
+This aimbot achieved the top score in [Aim Lab](https://youtu.be/vtTsFcAslbE), with the three layer yolov4-tiny convolutional neural network trained on less than 300 images.
 
 ## Features
 
