@@ -4,6 +4,8 @@ This is a general purpose aimbot, which uses a neural network for enemy/target d
 
 ![AimBot](gui.PNG?raw=true "AimBot")
 
+This aimbot achieved the top score in [Aim Lab](https://youtu.be/vtTsFcAslbE), with the yolov4 neural network trained on less than 300 images.
+
 ## Features
 
 Provided below is a list of the main features:
