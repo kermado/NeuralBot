@@ -20,7 +20,7 @@ Provided below is a list of the main features:
 
 ## Requirements
 
-Unless you are downloading a pre-built release, you must install the following requirements in order to use the included OpenCV detector:
+Unless you are downloading a [pre-built release](https://github.com/kermado/NeuralBot/releases/download/v1.0/NeuralBot.zip), you must install the following requirements in order to use the included OpenCV detector:
 
 * [OpenCV 4.4.0](https://opencv.org/releases/)
 * [NVIDIA CUDA Toolkit 10.0](https://developer.nvidia.com/cuda-toolkit-archive)
