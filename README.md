@@ -98,7 +98,7 @@ The screen grabbers are unable to capture from most games that run in fullscreen
 This aimbot will probably work with most first-person shooter games. You will most likely need to configure the aimer for your mouse sensitivity in order to get the best results.
 
 **Where can I find trained neural network configuration and model files?**
-The aimbot doesn't include any such files at this time. You can always train your own neural network. The [Darknet](https://github.com/AlexeyAB/darknet) project describes how to do this.
+The pre-built release includes a model (aimlab.weights) and configuration file (aimlab.cfg) for AimLab. You can always train your own neural network. The [Darknet](https://github.com/AlexeyAB/darknet) project describes how to do this.
 
 **Will I get banned for using this?**
 If the user agreement doesn't allow the use of such programs then probably. Many anti-cheat programs detect injected mouse input events. There is also a good chance that this will become "signature detected" by many anti-cheat programs in the future.
