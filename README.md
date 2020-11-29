@@ -18,6 +18,16 @@ Provided below is a list of the main features:
 * ESP overlay
 * Save/load configurations
 
+## Requirements
+
+Unless you are downloading a pre-built release, you must install the following requirements in order to use the included OpenCV detector:
+
+* [OpenCV 4.4.0](https://opencv.org/releases/)
+* [NVIDIA CUDA Toolkit 10.0](https://developer.nvidia.com/cuda-toolkit-archive)
+* [NVIDIA cuDNN 7.0](https://developer.nvidia.com/cuda-toolkit-archive)
+
+Please see the [cuDNN installation instructions](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#installwindows). Note that the pre-built releases include all the necessary DLL dependencies.
+
 ## Components
 
 The aimbot is designed to be extended/customised. You can implement your own components and they can be selected and configured through the user interface. This section details the major components. The aimbot includes some basic implementations of these components by default.
