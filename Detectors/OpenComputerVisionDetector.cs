@@ -20,7 +20,7 @@ namespace AimBot.Detectors
             private static extern IntPtr Create(string configurationPath, string weightsPath);
 
             [DllImport(LibraryName, EntryPoint = "detect")]
-            private static extern int Detect(IntPtr instance, IntPtr data, int width, int height, IntPtr boxes);
+            private static extern int Detect(IntPtr instance, IntPtr data, int width, int height, bool swap, IntPtr boxes);
 
             [DllImport(LibraryName, EntryPoint = "release")]
             private static extern int Release(IntPtr instance);
@@ -40,20 +40,20 @@ namespace AimBot.Detectors
             private BBox[] boxes;
             private IntPtr instance;
             private bool disposed;
-
+            
             public OpenCV(string configurationPath, string weightsPath)
             {
                 boxes = new BBox[1000];
                 instance = Create(configurationPath, weightsPath);
             }
 
-            public BBox[] Detect(IntPtr bytes, int width, int height, out int count)
+            public BBox[] Detect(IntPtr bytes, int width, int height, bool swap, out int count)
             {
                 var handle = GCHandle.Alloc(boxes, GCHandleType.Pinned);
 
                 try
                 {
-                    count = Detect(instance, bytes, width, height, handle.AddrOfPinnedObject());
+                    count = Detect(instance, bytes, width, height, swap, handle.AddrOfPinnedObject());
 
                     if (count <= 0)
                     {
@@ -97,12 +97,20 @@ namespace AimBot.Detectors
         private bool disposed;
         private OpenCV opencv;
         private readonly Resizer resizer;
+        private bool swap;
+
+        public bool SwapRB
+        {
+            get { return swap; }
+            set { swap = value; }
+        }
 
         public OpenComputerVisionDetector()
         {
             disposed = false;
             opencv = null;
             resizer = new Resizer();
+            swap = false;
         }
 
         protected override bool Reload()
@@ -134,7 +142,7 @@ namespace AimBot.Detectors
                     var ratiox = (double)region.Width / InputWidth;
                     var ratioy = (double)region.Height / InputHeight;
 
-                    var results = opencv.Detect(resized, InputWidth, InputHeight, out var count);
+                    var results = opencv.Detect(resized, InputWidth, InputHeight, SwapRB, out var count);
                     if (results != null && results.Length > 0)
                     {
                         for (int i = 0; i < count; ++i)
@@ -148,7 +156,7 @@ namespace AimBot.Detectors
                                 var h = (int)(result.height * ratioy);
 
                                 var bounds = new Rectangle(region.X + x, region.Y + y, w, h);
-                                AddDetection(bounds, result.confidence, esp);
+                                AddDetection(result.classId, bounds, result.confidence, esp);
                             }
                         }
                     }

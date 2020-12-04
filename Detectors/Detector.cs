@@ -122,12 +122,13 @@ namespace AimBot.Detectors
             return detections;
         }
 
-        protected void AddDetection(Rectangle bounds, double confidence, Esp esp)
+        protected void AddDetection(int classId, Rectangle bounds, double confidence, Esp esp)
         {
             var center = bounds.Center();
 
             if (esp != null)
             {
+                esp.Add(new TextShape(new Point(bounds.Left, bounds.Top - 12) , $"ID: {classId}", Color.Red, 12));
                 esp.Add(new RectangleShape(new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height), Color.Transparent, Color.Red, 2));
             }
 
