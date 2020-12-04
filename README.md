@@ -6,6 +6,10 @@ This is a general purpose aimbot, which uses a neural network for enemy/target d
 
 This aimbot achieved the top score in [Aim Lab](https://youtu.be/vtTsFcAslbE), with the three layer yolov4-tiny convolutional neural network trained on less than 300 images.
 
+## The Idea
+
+The idea was to create an aimbot that could be used across a wide variety of games. All you need is a trained neural network in the darknet format. Drop in the files, configure a few settings and away you go! Since the aimbot is not specific to a single game, it should be possible to easily adapt any of the components or create new components.
+
 ## Features
 
 Provided below is a list of the main features:
@@ -102,6 +106,9 @@ The pre-built release includes a model (aimlab.weights) and configuration file (
 
 **Will I get banned for using this?**
 If the user agreement doesn't allow the use of such programs then probably. Many anti-cheat programs detect injected mouse input events. There is also a good chance that this will become "signature detected" by many anti-cheat programs in the future.
+
+**Can I play in fullscreen mode?**
+It depends on the game, but probably no. You will usually need to play in either windowed or borderless windowed mode.
 
 **How can I calibrate the aimers?**
 The sensitivity settings can be calibrated in-game by using the flick aimer. Adjust the parameters until the flick lands perfectly on the target position. The PID parameters can be tuned using well-known methods, such as the Ziegler-Nichols method.
