@@ -18,6 +18,16 @@ Provided below is a list of the main features:
 * ESP overlay
 * Save/load configurations
 
+## Requirements
+
+Unless you are downloading a [pre-built release](https://github.com/kermado/NeuralBot/releases/download/v1.0/NeuralBot.zip), you must install the following requirements in order to use the included OpenCV detector:
+
+* [OpenCV 4.4.0](https://opencv.org/releases/)
+* [NVIDIA CUDA Toolkit 10.0](https://developer.nvidia.com/cuda-toolkit-archive)
+* [NVIDIA cuDNN 7.0](https://developer.nvidia.com/cuda-toolkit-archive)
+
+Please see the [cuDNN installation instructions](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#installwindows). Note that the pre-built releases include all the necessary DLL dependencies.
+
 ## Components
 
 The aimbot is designed to be extended/customised. You can implement your own components and they can be selected and configured through the user interface. This section details the major components. The aimbot includes some basic implementations of these components by default.
@@ -85,10 +95,10 @@ The screen grabbers are unable to capture from most games that run in fullscreen
 ## Frequently Asked Questions
 
 **Will this work with game xyz?**
-This aimbot will probably work with most first-person shooter games. You will most likely need to configure the aimer for your mouse sensitivity in order to get the best results.
+This aimbot will probably work with most first-person shooter games. You will need a trained neural network for the game and you will also most likely need to configure the aimer for your mouse sensitivity in order to get the best results.
 
 **Where can I find trained neural network configuration and model files?**
-The aimbot doesn't include any such files at this time. You can always train your own neural network. The [Darknet](https://github.com/AlexeyAB/darknet) project describes how to do this.
+The pre-built release includes a model (aimlab.weights) and configuration file (aimlab.cfg) for AimLab. You can always train your own neural network. The [Darknet](https://github.com/AlexeyAB/darknet) project describes how to do this.
 
 **Will I get banned for using this?**
 If the user agreement doesn't allow the use of such programs then probably. Many anti-cheat programs detect injected mouse input events. There is also a good chance that this will become "signature detected" by many anti-cheat programs in the future.
@@ -100,4 +110,4 @@ The sensitivity settings can be calibrated in-game by using the flick aimer. Adj
 No. The included OpenCV binary has been built for NVIDIA Pascal and Turing GPUs only. An NVIDIA GTX 1080 or better is recommended.
 
 **How do I run the aimbot?**
-You will need to use Visual Studio 2019 or later to build the solution. Pre-built binaries may be added in the future.
+You will need to use Visual Studio 2019 or later to build the solution. Alternatively, download the [pre-built release](https://github.com/kermado/NeuralBot/releases/download/v1.0/NeuralBot.zip).
