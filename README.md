@@ -28,7 +28,7 @@ Unless you are downloading a [pre-built release](https://github.com/kermado/Neur
 
 * [OpenCV 4.4.0](https://opencv.org/releases/)
 * [NVIDIA CUDA Toolkit 10.0](https://developer.nvidia.com/cuda-toolkit-archive)
-* [NVIDIA cuDNN 7.0](https://developer.nvidia.com/cuda-toolkit-archive)
+* [NVIDIA cuDNN 7.0](https://developer.nvidia.com/rdp/cudnn-archive)
 
 Please see the [cuDNN installation instructions](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#installwindows). Note that the pre-built releases include all the necessary DLL dependencies.
 
